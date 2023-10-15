@@ -1,14 +1,19 @@
-package hw1;
+package edu.hw1;
 
-public class Task2 {
+public final class Task2 {
 
-    public static int countDigits(int num){
+    private Task2() {
+    }
+
+    private static final int DISCHARGE = 10;
+
+    public static int countDigits(int num) {
         int count = 0;
-
-        do{
-            num /= 10;
+        int a = num;
+        do {
+            a /= DISCHARGE;
             count++;
-        }while(num > 0);
+        } while (a > 0);
 
         return count;
     }
