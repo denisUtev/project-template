@@ -10,6 +10,9 @@ public final class Task3 {
     }
 
     private static int min(int[] nums) {
+        if (nums.length == 0) {
+            throw new IllegalArgumentException();
+        }
         int minNum = nums[0];
         for (int num : nums) {
             minNum = Math.min(minNum, num);

@@ -8,15 +8,23 @@ public final class Task6 {
     private static final int KAPREKAR_NUM = 6174;
     private static final int COUNT_FIGURES = 10;
     private static final int DISCHARGE = 10;
+    private static final int MIN_NUMBER = 1001;
+    private static final int MAX_NUMBER = 9999;
 
+    @SuppressWarnings("ParameterAssignment")
     public static int countK(int num) {
         int[] countFigure = new int[COUNT_FIGURES];
-        int a = num;
-        while (a > 0) {
-            countFigure[a % COUNT_FIGURES]++;
-            a /= DISCHARGE;
+        if (num < MIN_NUMBER || num > MAX_NUMBER) {
+            throw new IllegalArgumentException("Необходимо четырехзначное число");
+        }
+        while (num > 0) {
+            countFigure[num % COUNT_FIGURES]++;
+            num /= DISCHARGE;
         }
         int newNum = getMaxNum(countFigure) - getMinNum(countFigure);
+        if (newNum == 0) {
+            throw new IllegalArgumentException("В числе не все цифры должны быть одинаковы");
+        }
         if (newNum == KAPREKAR_NUM) {
             return 1;
         }

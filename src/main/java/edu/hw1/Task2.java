@@ -7,14 +7,13 @@ public final class Task2 {
 
     private static final int DISCHARGE = 10;
 
+    @SuppressWarnings("ParameterAssignment")
     public static int countDigits(int num) {
         int count = 0;
-        int a = num;
         do {
-            a /= DISCHARGE;
+            num /= DISCHARGE;
             count++;
-        } while (a > 0);
-
+        } while (num != 0);
         return count;
     }
 }
