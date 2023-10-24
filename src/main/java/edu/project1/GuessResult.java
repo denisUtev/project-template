@@ -2,6 +2,8 @@ package edu.project1;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+
 public sealed interface GuessResult {
     char[] state();
     int attempt();
@@ -26,7 +28,7 @@ public sealed interface GuessResult {
 
         @Override
         public @NotNull String message() {
-            return "Defeat!";
+            return String.format("Missed, mistake %d out of %d.\n\nYou lost!", attempt, maxAttempts);
         }
     }
     record Win(char[] state, int attempt, int maxAttempts) implements GuessResult {
@@ -47,7 +49,7 @@ public sealed interface GuessResult {
 
         @Override
         public @NotNull String message() {
-            return "Win!";
+            return "You won!";
         }
     }
     record SuccessfulGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
@@ -68,7 +70,7 @@ public sealed interface GuessResult {
 
         @Override
         public @NotNull String message() {
-            return "Success!";
+            return "Hit!\n";
         }
     }
     record FailedGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
@@ -89,7 +91,7 @@ public sealed interface GuessResult {
 
         @Override
         public @NotNull String message() {
-            return "Failed!";
+            return String.format("Missed, mistake %d out of %d!\n", attempt, maxAttempts);
         }
     }
 }

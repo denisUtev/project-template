@@ -7,6 +7,7 @@ public class Session {
     private final char[] userAnswer;
     private final int maxAttempts;
     private int attempts;
+    private int countOpenedLetters = 0;
 
     public Session(String ans, int maxAttempts) {
         answer = ans;
@@ -19,16 +20,23 @@ public class Session {
 
     @NotNull GuessResult guess(char guess){
         boolean isSuccessfulGuess = false;
-        attempts++;
         for (int i = 0; i < answer.length(); i++) {
-            if (answer.charAt(i) == guess) {
+            if (answer.charAt(i) == guess && userAnswer[i] == '*') {
                 userAnswer[i] = answer.charAt(i);
+                countOpenedLetters++;
                 isSuccessfulGuess = true;
             }
         }
         if (isSuccessfulGuess) {
+            if (countOpenedLetters == answer.length()) {
+                return new GuessResult.Win(userAnswer, attempts, maxAttempts);
+            }
             return new GuessResult.SuccessfulGuess(userAnswer, attempts, maxAttempts);
         } else {
+            attempts++;
+            if (attempts == maxAttempts) {
+                return new GuessResult.Defeat(userAnswer, attempts, maxAttempts);
+            }
             return new GuessResult.FailedGuess(userAnswer, attempts, maxAttempts);
         }
     }
