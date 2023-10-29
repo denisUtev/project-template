@@ -43,16 +43,6 @@ public final class Task2 {
             super(0, 0);
         }
 
-        @Override
-        Rectangle setWidth(int width) {
-            return super.setWidth(width);
-        }
-
-        @Override
-        Rectangle setHeight(int height) {
-            return super.setHeight(height);
-        }
-
         Square setSize(int size) {
             return new Square(size);
         }

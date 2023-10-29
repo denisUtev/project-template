@@ -7,8 +7,8 @@ public final class Task4 {
     }
 
     public static CallingInfo getCallingInfo() {
-        StackTraceElement[] methods = Thread.currentThread().getStackTrace();
-        return new CallingInfo(methods[2].getClassName(), methods[2].getMethodName());
+        StackTraceElement method = new Throwable().getStackTrace()[1];
+        return new CallingInfo(method.getClassName(), method.getMethodName());
     }
 
     public record CallingInfo(String className, String methodName) { }

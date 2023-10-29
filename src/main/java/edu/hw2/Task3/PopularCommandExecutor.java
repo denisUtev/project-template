@@ -14,21 +14,17 @@ public final class PopularCommandExecutor {
     }
 
     void tryExecute(String command) {
-        boolean isExecuted = false;
         ConnectionException exception = null;
         for (int i = 0; i < maxAttempts; i++) {
-            try {
-                manager.getConnection().execute(command);
-                manager.getConnection().close();
-                isExecuted = true;
+            try (Connection connection = manager.getConnection()){
+                connection.execute(command);
+                exception = null;
                 break;
-            } catch (ConnectionException e) {
-                exception = e;
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                exception = new ConnectionException(e);
             }
         }
-        if (!isExecuted) {
+        if (exception != null) {
             throw exception;
         }
     }
