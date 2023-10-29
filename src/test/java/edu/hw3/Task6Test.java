@@ -13,12 +13,18 @@ public class Task6Test {
     @DisplayName("тест шестого задания hw3")
     void task1Test() {
         MyStockMarket stockMarket = new MyStockMarket();
-        stockMarket.add(new Stock() {
-            @Override
-            public Record Stock(String name, int price) {
-                return null;
-            }
-        });
-        assertThat(clusterize("()()()")).isEqualTo(new String[]{"()", "()", "()"});
+        stockMarket.add(new Stock("stock1", 10));
+        stockMarket.add(new Stock("stock2", 100));
+        stockMarket.add(new Stock("stock3", 99));
+
+        assertThat(stockMarket.mostValuableStock().name()).isEqualTo("stock2");
+        assertThat(stockMarket.mostValuableStock().name()).isEqualTo("stock2");
+
+        stockMarket.add(new Stock("stock4", 120));
+        Stock stock5 = new Stock("stock5", 125);
+        stockMarket.add(stock5);
+        assertThat(stockMarket.mostValuableStock().name()).isEqualTo("stock5");
+        stockMarket.remove(stock5);
+        assertThat(stockMarket.mostValuableStock().name()).isEqualTo("stock4");
     }
 }
