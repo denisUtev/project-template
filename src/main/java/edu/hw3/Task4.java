@@ -8,6 +8,7 @@ public final class Task4 {
 
     }
 
+    @SuppressWarnings("MagicNumber")
     private static final HashMap<Integer, String> ROMAN_NUMERAL = new HashMap<>() {{
         put(1, "I");
         put(4, "IV");
@@ -25,6 +26,7 @@ public final class Task4 {
     }};
     private static final int[] ROMAN_VALUES = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 
+    @SuppressWarnings("ParameterAssignment")
     public static String convertToRoman(int num) {
         StringBuilder romanNumber = new StringBuilder();
 

@@ -12,7 +12,7 @@ public final class Task1 {
 
     public static String encodeAtbash(String text) {
         StringBuilder resultText = new StringBuilder();
-        for(int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) >= FIRST_UPPER_LATIN_LETTER && text.charAt(i) <= LAST_LOWER_LATIN_LETTER) {
                 resultText.append(getAtbashLetter(text.charAt(i)));
             } else {
@@ -27,8 +27,8 @@ public final class Task1 {
             throw new IllegalArgumentException();
         }
         if (a >= FIRST_LOWER_LATIN_LETTER) {
-            return (char) ((FIRST_LOWER_LATIN_LETTER + COUNT_LATIN_LETTERS / 2) - (a - (FIRST_LOWER_LATIN_LETTER + COUNT_LATIN_LETTERS / 2)) - 1);
+            return (char) (((FIRST_LOWER_LATIN_LETTER * 2 + COUNT_LATIN_LETTERS) - a) - 1);
         }
-        return (char) ((FIRST_UPPER_LATIN_LETTER + COUNT_LATIN_LETTERS / 2) - (a - (FIRST_UPPER_LATIN_LETTER + COUNT_LATIN_LETTERS / 2)) - 1);
+        return (char) (((FIRST_UPPER_LATIN_LETTER * 2 + COUNT_LATIN_LETTERS) - a) - 1);
     }
 }

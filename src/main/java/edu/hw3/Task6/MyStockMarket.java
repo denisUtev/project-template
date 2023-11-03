@@ -3,7 +3,7 @@ package edu.hw3.Task6;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class MyStockMarket implements StockMarket{
+public class MyStockMarket implements StockMarket {
 
     PriorityQueue<Stock> stockQueue = new PriorityQueue<>(Collections.reverseOrder());
 

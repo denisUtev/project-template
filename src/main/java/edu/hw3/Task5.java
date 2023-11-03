@@ -3,7 +3,6 @@ package edu.hw3;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 import static java.util.Collections.reverseOrder;
 
 public final class Task5 {
@@ -13,7 +12,7 @@ public final class Task5 {
     }
 
     public static Object[] parseContacts(String[] persons, String type) {
-        if(persons == null) {
+        if (persons == null) {
             return new String[] {};
         }
         List<String> listPresons = Arrays.asList(persons);

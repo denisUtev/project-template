@@ -13,7 +13,7 @@ public final class Task2 {
         List<String> result = new ArrayList<>();
         StringBuilder cluster = new StringBuilder();
         int countOpenedBrackets = 0;
-        for(int i = 0; i < stroke.length(); i++) {
+        for (int i = 0; i < stroke.length(); i++) {
             if (stroke.charAt(i) == '(') {
                 if (i > 0 && countOpenedBrackets == 0) {
                     result.add(cluster.toString());
