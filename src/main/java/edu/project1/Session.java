@@ -12,13 +12,13 @@ public class Session {
     public Session(String ans, int maxAttempts) {
         answer = ans;
         userAnswer = new char[ans.length()];
-        for(int i = 0; i < ans.length(); i++) {
+        for (int i = 0; i < ans.length(); i++) {
             userAnswer[i] = '*';
         }
         this.maxAttempts = maxAttempts;
     }
 
-    @NotNull GuessResult guess(char guess){
+    @NotNull GuessResult guess(char guess) {
         boolean isSuccessfulGuess = false;
         for (int i = 0; i < answer.length(); i++) {
             if (answer.charAt(i) == guess && userAnswer[i] == '*') {
@@ -40,7 +40,8 @@ public class Session {
             return new GuessResult.FailedGuess(userAnswer, attempts, maxAttempts);
         }
     }
-    @NotNull GuessResult giveUp(){
+
+    @NotNull GuessResult giveUp() {
         return new GuessResult.Defeat(userAnswer, attempts, maxAttempts);
     }
 }

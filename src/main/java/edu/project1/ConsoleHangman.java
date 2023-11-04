@@ -1,9 +1,13 @@
 package edu.project1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleHangman {
+
+    Scanner console = new Scanner(System.in);
+
+    private final static String EXIT_COMMAND = "esc";
+
     public void run() {
         Dictionary dict = new StandartDictionary();
         String answer = dict.randomWord();
@@ -12,7 +16,7 @@ public class ConsoleHangman {
 
         while (!isGameOver) {
             String input = readInput();
-            if (input.equals("esc")) {
+            if (input.equals(EXIT_COMMAND)) {
                 printState(session.giveUp());
                 isGameOver = true;
             } else {
@@ -25,12 +29,12 @@ public class ConsoleHangman {
         }
     }
 
+    @SuppressWarnings("RegexpSinglelineJava")
     private String readInput() {
         System.out.println("Guess a letter: ");
-        Scanner console = new Scanner(System.in);
         while (true) {
             String input = console.nextLine();
-            if (input.equals("esc") || input.length() == 1) {
+            if (input.equals(EXIT_COMMAND) || input.length() == 1) {
                 return input;
             } else {
                 System.out.println("Repeat please: ");
@@ -42,8 +46,9 @@ public class ConsoleHangman {
         return session.guess(input);
     }
 
+    @SuppressWarnings("RegexpSinglelineJava")
     private void printState(GuessResult guess) {
-        System.out.println("The word: " + String.valueOf(guess.state()) + "\n");
+        System.out.printf("The word: %s \n", String.valueOf(guess.state()));
         System.out.println(guess.message());
     }
 }

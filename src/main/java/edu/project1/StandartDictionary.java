@@ -1,14 +1,15 @@
 package edu.project1;
 
-import org.jetbrains.annotations.NotNull;
 import java.util.Random;
+import org.jetbrains.annotations.NotNull;
 
-public class StandartDictionary implements Dictionary{
+public class StandartDictionary implements Dictionary {
 
-    private String[] words = new String[]{"denis", "utev", "java", "python", "ruby", "processing"};
+    private final String[] words = new String[]{"denis", "utev", "java", "python", "ruby", "processing"};
+    Random randomIndex = new Random();
+
     @Override
     public @NotNull String randomWord() {
-        Random randomIndex = new Random();
         return words[randomIndex.nextInt(words.length)];
     }
 }
