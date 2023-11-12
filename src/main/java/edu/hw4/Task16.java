@@ -1,7 +1,6 @@
 package edu.hw4;
 
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 
 public final class Task16 {
@@ -11,9 +10,16 @@ public final class Task16 {
     }
 
     public static List<Animal> getSortedAnimalsByTypeSexName(Collection<Animal> animals) {
-        //не правильно работает, потом переделаю
-        return animals.stream().sorted(Comparator.comparingInt(a -> a.type().ordinal()))
-            .sorted(Comparator.comparingInt(a -> a.sex().ordinal()))
-            .sorted(Comparator.comparing(Animal::name)).toList();
+        return animals.stream().sorted((a, b) -> {
+            int differenceType = a.type().ordinal() - b.type().ordinal();
+            if (differenceType != 0) {
+                return differenceType;
+            }
+            int differenceSex = a.sex().ordinal() - b.sex().ordinal();
+            if (differenceSex != 0) {
+                return differenceSex;
+            }
+            return a.name().compareTo(b.name());
+        }).toList();
     }
 }

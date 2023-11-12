@@ -10,24 +10,20 @@ public class Task16Test {
     @DisplayName("Тест: Список животных, отсортированный по виду, затем по полу, затем по имени")
     void testSortedAnimalsByTypeSexName() {
         List<Animal> sortedListAnimals = Task16.getSortedAnimalsByTypeSexName(DataBaseAnimals.ANIMAL_LIST);
-        sortedListAnimals.forEach(System.out::println);
-        
         boolean isSorted = true;
 
         for (int i = 1; i < sortedListAnimals.size(); i++) {
-            if (sortedListAnimals.get(i).type().ordinal() > sortedListAnimals.get(i - 1).type().ordinal()) {
-                if (sortedListAnimals.get(i).sex().ordinal() > sortedListAnimals.get(i - 1).sex().ordinal()) {
-                    if (sortedListAnimals.get(i).name().compareTo(sortedListAnimals.get(i - 1).name()) < 0) {
-                        isSorted = false;
-                        break;
-                    }
-                } else {
+            if (sortedListAnimals.get(i).type().ordinal() < sortedListAnimals.get(i - 1).type().ordinal()) {
+                isSorted = false;
+                break;
+            } else if (sortedListAnimals.get(i).type().ordinal() == sortedListAnimals.get(i - 1).type().ordinal()) {
+                if (sortedListAnimals.get(i).sex().ordinal() < sortedListAnimals.get(i - 1).sex().ordinal()) {
+                    isSorted = false;
+                    break;
+                } else if (sortedListAnimals.get(i).name().compareTo(sortedListAnimals.get(i - 1).name()) < 0) {
                     isSorted = false;
                     break;
                 }
-            } else {
-                isSorted = false;
-                break;
             }
         }
 

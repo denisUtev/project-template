@@ -9,6 +9,6 @@ public final class Task12 {
     }
 
     public static Integer getCountAnimalsWhereWeightMoreHeight(Collection<Animal> animals) {
-        return (int)animals.stream().filter(animal -> animal.weight() > animal.height()).count();
+        return (int) animals.stream().filter(animal -> animal.weight() > animal.height()).count();
     }
 }

@@ -1,6 +1,5 @@
 package edu.hw4;
 
-import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,8 +11,10 @@ public final class Task15 {
 
     }
 
-    public static Map<Animal.Type, Integer> getMapSumWeightOfTypeAnimalsFromKToLYears(Collection<Animal> animals, int k, int l) {
-        var result = animals.stream().filter(animal -> animal.age() >= k && animal.age() < l).collect(
+    public static Map<Animal.Type, Integer>
+    getMapSumWeightOfTypeAnimalsFromKToLYears(Collection<Animal> animals, int k, int l) {
+        var result = animals.stream()
+            .filter(animal -> animal.age() >= k && animal.age() < l).collect(
                 Collectors.groupingBy(Animal::type, Collectors.toList())
             ).entrySet().stream().collect(
                 Collectors.toMap(
@@ -24,7 +25,7 @@ public final class Task15 {
                 )
             );
 
-        for(var type : Animal.Type.values()) {
+        for (var type : Animal.Type.values()) {
             if (!result.containsKey(type)) {
                 result.put(type, 0);
             }
