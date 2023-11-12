@@ -12,7 +12,7 @@ public class Task6Test {
         Map<Animal.Type, Animal> mapOfHeaviestAnimals = Task6.getMapOfHeaviestAnimals(DataBaseAnimals.ANIMAL_LIST);
 
         assertThat(mapOfHeaviestAnimals.get(Animal.Type.DOG).name()).isEqualTo("Hippo");
-        assertThat(mapOfHeaviestAnimals.get(Animal.Type.CAT).name()).isEqualTo("cat1");
+        assertThat(mapOfHeaviestAnimals.get(Animal.Type.CAT).name()).isEqualTo("cat1 t p");
         assertThat(mapOfHeaviestAnimals.get(Animal.Type.SPIDER).name()).isEqualTo("Socrat");
         assertThat(mapOfHeaviestAnimals.get(Animal.Type.BIRD).name()).isEqualTo("bird1");
         assertThat(mapOfHeaviestAnimals.get(Animal.Type.FISH).name()).isEqualTo("Shark");
