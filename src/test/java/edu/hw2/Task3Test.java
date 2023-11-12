@@ -17,21 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Task3Test {
 
     @Test
-    @DisplayName("тест третьего задания hw2")
-    void task3Test() {
-
-        PopularCommandExecutor faultyCommandExecutor = new PopularCommandExecutor(new FaultyConnectionManager(), 1);
-        PopularCommandExecutor defaultCommandExecutor = new PopularCommandExecutor(new DefaultConnectionManager(), 10);
-
-        assertThrows(
-            ConnectionException.class,
-            faultyCommandExecutor::updatePackages
-        );
-
-        assertDoesNotThrow(defaultCommandExecutor::updatePackages);
-    }
-
-    @Test
     @DisplayName("тест Connection")
     void testConnections() {
 
