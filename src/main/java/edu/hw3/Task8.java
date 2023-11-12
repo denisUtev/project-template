@@ -10,7 +10,7 @@ public final class Task8 {
 
     }
 
-    public static class BackwardIterator<T> implements Iterator {
+    public static class BackwardIterator<T> implements Iterator<T> {
 
         Stack<T> stack = new Stack<>();
         int index;

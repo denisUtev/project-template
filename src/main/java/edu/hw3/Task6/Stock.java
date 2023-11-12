@@ -2,9 +2,9 @@ package edu.hw3.Task6;
 
 import org.jetbrains.annotations.NotNull;
 
-public record Stock(String name, int price) implements Comparable {
+public record Stock(String name, int price) implements Comparable<Stock> {
     @Override
-    public int compareTo(@NotNull Object o) {
-        return Integer.compare(price, ((Stock) o).price);
+    public int compareTo(@NotNull Stock o) {
+        return Integer.compare(price, o.price);
     }
 }

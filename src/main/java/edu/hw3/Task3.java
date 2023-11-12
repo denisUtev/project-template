@@ -13,11 +13,8 @@ public final class Task3 {
         HashMap<T, Integer> dict = new HashMap<>();
 
         for (T word : list) {
-            if (dict.containsKey(word)) {
-                dict.put(word, dict.get(word) + 1);
-            } else {
-                dict.put(word, 1);
-            }
+            dict.putIfAbsent(word, 0);
+            dict.put(word, dict.get(word) + 1);
         }
 
         return dict;
