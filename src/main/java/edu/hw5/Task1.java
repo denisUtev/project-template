@@ -1,17 +1,10 @@
 package edu.hw5;
 
 import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.temporal.TemporalUnit;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 public final class Task1 {
 
