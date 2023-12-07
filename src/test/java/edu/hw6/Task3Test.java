@@ -13,12 +13,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task3Test {
 
-    public static final String DATA_PATH = "src/test/java/edu/hw6";
+    public static final String DATA_PATH = "src/test/java/edu/hw6/image";
 
     @Test
     @DisplayName("тест цепочечного фильтра")
     void testFILTER() {
-        Path rightPath = Path.of("src\\test\\java\\edu\\hw6\\Снимок экрана 2023-10-19 135343.png");
+        Path rightPath = Path.of("src\\test\\java\\edu\\hw6\\image\\Снимок экрана 2023-10-19 135343.png");
         try {
             assertThat(newDirectoryStream(Path.of(DATA_PATH), FILTER).iterator().next())
                 .isEqualTo(rightPath);
