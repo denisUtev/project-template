@@ -1,17 +1,19 @@
 package edu.hw6.Task5;
 
-import edu.hw2.Task3.ConnectionException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HackerNews {
+public final class HackerNews {
+
+    private HackerNews() {
+
+    }
 
     public static final String HTTP_LINK = "https://hacker-news.firebaseio.com/v0/";
     public static final String TOP_STORIES_JSON = "topstories.json";

@@ -16,13 +16,13 @@ public final class Task4 {
 
     }
 
-    public static void CompositionWriteFile(String path) {
+    public static void compositionWriteFile(String path) {
         try (var outputStream = Files.newOutputStream(Path.of(path));
              var checkedOutputStream = new CheckedOutputStream(outputStream, new Adler32());
              var bufferedOutputStream = new BufferedOutputStream(checkedOutputStream);
              var outputStreamWriter = new OutputStreamWriter(bufferedOutputStream, StandardCharsets.UTF_8);
              var printWriter = new PrintWriter(outputStreamWriter)
-        ){
+        ) {
             printWriter.println("Programming is learned by writing programs. ― Brian Kernighan");
         } catch (IOException e) {
             throw new RuntimeException(e);
