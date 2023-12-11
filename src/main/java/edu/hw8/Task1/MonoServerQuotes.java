@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 public class MonoServerQuotes extends Thread {
 
@@ -20,30 +19,20 @@ public class MonoServerQuotes extends Thread {
 
     @Override
     public void run() {
-        try {
-            BufferedInputStream inputStream = null;
-            BufferedOutputStream outputStream = null;
-            try {
-                outputStream = new BufferedOutputStream(socket.getOutputStream());
-                while (socket.isConnected()) {
-                    String keyWord = getClientRequest();
-                    if (keyWord.equals("socket closed")) {
-                        break;
-                    }
-
-                    String answer = QuoteDB.getQuote(keyWord);
-                    if (!answer.isEmpty()) {
-                        sendAnswerToClient(outputStream, answer);
-                    }
+        try (BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream())) {
+            while (socket.isConnected()) {
+                String keyWord = getClientRequest();
+                if (keyWord.equals("socket closed")) {
+                    break;
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } finally {
-                Objects.requireNonNull(inputStream).close();
-                Objects.requireNonNull(outputStream).close();
-            }
-        } catch (IOException ignored) {
 
+                String answer = QuoteDB.getQuote(keyWord);
+                if (!answer.isEmpty()) {
+                    sendAnswerToClient(outputStream, answer);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
